@@ -1,37 +1,33 @@
 #ifndef BLOCKDETECTOR_HPP
 #define BLOCKDETECTOR_HPP
 
-//#include "Basic Control Classes/DistanceSenor.hpp"
 #include "Basic Control Classes/OpticalSensor.hpp"
 
 class BlockDetector {
 private:
     bool colourSort = true;
-    bool allianceColourRed;
+    bool allianceColourRed = false;
 
     OpticalSensor::BlockType block = OpticalSensor::BlockType::None;
 
     bool badColour = false;
-
-    int trapDoorTimer = 0;
-    int delayTime = 23;
+    int trapDoorTimer = 5;
 
     OpticalSensor OpticalSensor_;
-//    DistanceSensor DistanceSensor_;
+//  DistanceSensor DistanceSensor_;
     
 
 public:
-    BlockDetector() : OpticalSensor_(19) /*, DistanceSensor_(17) */{
+    BlockDetector() : OpticalSensor_(13) {
         SortOn();
     }
 
     void Tick() {
         OpticalSensor_.Tick();
-//        DistanceSensor_.Tick();
 
         if (!colourSort) return;
 
-        if (/*DistanceSensor_.GetDistance()  < 10 && */trapDoorTimer < 0) {
+        if (trapDoorTimer == 0) {
             block = OpticalSensor_.GetBlock();
             switch (block)
             {
@@ -44,14 +40,13 @@ public:
             default:
                 badColour = false;
                 break;
-            }
-
-            if (badColour) {
-                trapDoorTimer = delayTime;
-            }
+            } 
+            trapDoorTimer = 5;
             block = OpticalSensor::BlockType::None;
+        }
+        else {
+            trapDoorTimer--;
         }        
-        trapDoorTimer--;
     }
 
     void SortOn() {

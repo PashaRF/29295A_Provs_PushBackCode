@@ -11,6 +11,7 @@ class TrapDoor
         Pistonf TrapDoor_;
         bool TrapDoorOn_ = false;
         bool SortOn_ = true;
+        int TrapDoorDelay = 50;
         BlockDetector BlockDetector_;
     public:
         TrapDoor(Pistonf TrapDoor) : TrapDoor_(TrapDoor) {
@@ -23,12 +24,19 @@ class TrapDoor
 
         void OutputTick() { 
             if (SortOn_ == true) {
-                if (BlockDetector_.GetBadColour() == true) {
-                TrapDoorOn_ = true;
+                if (BlockDetector_.GetBadColour() == true && TrapDoorOn_ == false) {
+                    TrapDoorOn_= true;
+                    TrapDoor_.SetValue(true);
+                    TrapDoorDelay = 50;
                 }
-                else   {
-                TrapDoorOn_ = false;
-                } 
+                if (TrapDoorDelay == 0) {
+                        TrapDoorOn_ = false;
+                        TrapDoor_.SetValue(false);
+                        TrapDoorDelay = -1;
+                }
+                else if (TrapDoorDelay > 0) {
+                    TrapDoorDelay--;
+                }
             }
         }
 

@@ -490,8 +490,9 @@ void fullWP_RR() {
   brain-> intakeOn = true;
   brain->matchLoadOn = true;
 
-  ch->pid_drive_set(9, DRIVE_SPEED);
-  ch->pid_wait_quick_chain();
+  ch->pid_drive_set(11, DRIVE_SPEED);
+  ch->pid_wait();
+  pros::delay(20);
 
   ch->pid_turn_set(-55, TURN_SPEED);
   ch->pid_wait_quick_chain();
@@ -500,51 +501,53 @@ void fullWP_RR() {
   brain -> intakeMiddleOn = false;
 
   ch->pid_drive_set(10.5, DRIVE_SPEED);
-  ch->pid_wait();
+  ch->pid_wait_quick_chain();
   brain->intakeReverseOn = true;
-  pros::delay(1600);
+  pros::delay(1150);
   brain->intakeReverseOn = false;
   brain->descoreOn = false;
 
   ch->pid_drive_set(-12.5, DRIVE_SPEED);
-  ch->pid_wait();
-  pros::delay(20);
+  ch->pid_wait_quick_chain();
 
   ch->pid_turn_set(-100, TURN_SPEED);
-  ch->pid_wait();
+  ch->pid_wait_quick_chain();
 
   brain->intakeOn = true;
   ch->pid_drive_set(36, DRIVE_SPEED);
-  ch->pid_wait();
+  ch->pid_wait_quick_chain();
   brain->matchLoadOn = true;
 
-  ch->pid_drive_set(11.5, DRIVE_SPEED);
-  ch->pid_wait();
+  ch->pid_drive_set(10.5, DRIVE_SPEED);
+  ch->pid_wait_quick_chain();
   brain->prerollerOnly = true;
 
   ch->pid_turn_set(-144, TURN_SPEED);
   ch->pid_wait_quick_chain();
-
-  ch->pid_drive_set(-14, DRIVE_SPEED);
-  ch->pid_wait_quick_chain();
   brain->prerollerOnly = false;
-  pros::delay(1800);
-  brain->intakeReverseOn = true;
 
-  ch->pid_drive_set(44.5, DRIVE_SPEED);
+  ch->pid_drive_set(-13.5, DRIVE_SPEED);
   ch->pid_wait_quick_chain();
-  brain-> intakeReverseOn = false;
-  brain-> intakeOn = true;
-  brain-> descoreOn = true;
+  pros::delay(900);
+  brain->intakeOn = false;
+  brain->descoreOn = true;
+
+  ch->pid_drive_set(43.5, DRIVE_SPEED);
+  ch->pid_wait_quick_chain();
 
   ch->pid_turn_set(170, TURN_SPEED);
   ch->pid_wait_quick_chain();
+  brain->intakeOn = true;
   ch->pid_drive_set(13.5, 110);
   ch->pid_wait_quick_chain();
-  ch->pid_drive_set(1, 110);
-  ch->pid_wait_quick_chain();
-  ch->pid_drive_set(1, 110);
-  ch->pid_wait_quick_chain();
+  ch->pid_drive_set(2, 110);
+  ch->pid_wait();
+  pros::delay(300);
+  brain->intakeOn = false;
+  ch->pid_drive_set(-30, 127);
+  brain-> descoreOn = false;
+  brain->intakeOn = true;
+  
 //  pros::delay(1300);
 
   //ch->pid_drive_set(-24, 85);
