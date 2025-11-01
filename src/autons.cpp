@@ -547,12 +547,6 @@ void fullWP_RR() {
   ch->pid_drive_set(-30, 127);
   brain-> descoreOn = false;
   brain->intakeOn = true;
-  
-//  pros::delay(1300);
-
-  //ch->pid_drive_set(-24, 85);
- // ch->pid_wait_quick_chain();
-//  brain -> descoreOn = false;
 }
 
 // . . .
