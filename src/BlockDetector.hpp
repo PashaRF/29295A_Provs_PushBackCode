@@ -6,7 +6,7 @@
 class BlockDetector {
 private:
     bool colourSort = true;
-    bool allianceColourRed = false;
+    bool allianceColourRed;
 
     OpticalSensor::BlockType block = OpticalSensor::BlockType::None;
 
@@ -18,7 +18,7 @@ private:
     
 
 public:
-    BlockDetector() : OpticalSensor_(13) {
+    BlockDetector() : OpticalSensor_(20) {
         SortOn();
     }
 

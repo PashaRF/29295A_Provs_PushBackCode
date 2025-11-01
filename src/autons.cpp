@@ -500,14 +500,14 @@ void fullWP_RR() {
   brain->intakeOn = false;
   brain -> intakeMiddleOn = false;
 
-  ch->pid_drive_set(10.5, DRIVE_SPEED);
+  ch->pid_drive_set(9.5, DRIVE_SPEED);
   ch->pid_wait_quick_chain();
   brain->intakeReverseOn = true;
-  pros::delay(1150);
+  pros::delay(1200);
   brain->intakeReverseOn = false;
   brain->descoreOn = false;
 
-  ch->pid_drive_set(-12.5, DRIVE_SPEED);
+  ch->pid_drive_set(-11.5, DRIVE_SPEED);
   ch->pid_wait_quick_chain();
 
   ch->pid_turn_set(-100, TURN_SPEED);
@@ -530,23 +530,21 @@ void fullWP_RR() {
   ch->pid_wait_quick_chain();
   pros::delay(900);
   brain->intakeOn = false;
-  brain->descoreOn = true;
 
   ch->pid_drive_set(43.5, DRIVE_SPEED);
   ch->pid_wait_quick_chain();
 
   ch->pid_turn_set(170, TURN_SPEED);
   ch->pid_wait_quick_chain();
+  brain->prerollerOnly = true;
   brain->intakeOn = true;
-  ch->pid_drive_set(13.5, 110);
+  ch->pid_drive_set(13.5, 90);
   ch->pid_wait_quick_chain();
-  ch->pid_drive_set(2, 110);
+  ch->pid_drive_set(3, 120);
   ch->pid_wait();
-  pros::delay(300);
-  brain->intakeOn = false;
-  ch->pid_drive_set(-30, 127);
-  brain-> descoreOn = false;
-  brain->intakeOn = true;
+  pros::delay(250);
+  ch->pid_drive_set(-28, 127);
+  brain-> prerollerOnly = false;
 }
 
 // . . .
