@@ -43,7 +43,8 @@ ez::as::auton_selector.autons_add({
 //{"Test Auton", testAuton},
 //{"Drive Auton", driveAuton},
 // {"Turn Auton", turnAuton},
- {"fullWP_RR", fullWP_RR},
+//{"fullWP_RR", fullWP_RR},
+ {"Block9_RR", Block9_RR},
    });
   // Look at your horizontal tracking wheel and decide if it's in front of the midline of your robot or behind it
   //  - change `back` to `front` if the tracking wheel is in front of the midline

@@ -471,7 +471,7 @@ void turnAuton() {
   ch->pid_turn_set (0, TURN_SPEED);
   ch->pid_wait();
 } */
-
+/*
 void fullWP_RR() {
   Drive* ch = &robot->DriveTrain_.DriveTrain_.Chassis_;
   robot->IsAutonomous = true;
@@ -490,7 +490,7 @@ void fullWP_RR() {
   brain-> intakeOn = true;
   brain->matchLoadOn = true;
 
-  ch->pid_drive_set(11, DRIVE_SPEED);
+  ch->pid_drive_set(12, DRIVE_SPEED);
   ch->pid_wait();
   pros::delay(20);
 
@@ -500,10 +500,11 @@ void fullWP_RR() {
   brain->intakeOn = false;
   brain -> intakeMiddleOn = false;
 
-  ch->pid_drive_set(9.5, DRIVE_SPEED);
+  ch->pid_drive_set(10, DRIVE_SPEED);
   ch->pid_wait_quick_chain();
   brain->intakeReverseOn = true;
   pros::delay(1200);
+ // pros::delay(2500);
   brain->intakeReverseOn = false;
   brain->descoreOn = false;
 
@@ -531,22 +532,66 @@ void fullWP_RR() {
   pros::delay(900);
   brain->intakeOn = false;
 
-  ch->pid_drive_set(43.5, DRIVE_SPEED);
+  ch->pid_drive_set(43, DRIVE_SPEED);
   ch->pid_wait_quick_chain();
 
-  ch->pid_turn_set(170, TURN_SPEED);
+  ch->pid_turn_set(169, TURN_SPEED);
   ch->pid_wait_quick_chain();
-  brain->prerollerOnly = true;
-  brain->intakeOn = true;
-  ch->pid_drive_set(13.5, 90);
+  brain -> intakeOn = true;
+  brain -> descoreOn = true;
+  ch->pid_drive_set(14, 105);
   ch->pid_wait_quick_chain();
   ch->pid_drive_set(3, 120);
   ch->pid_wait();
-  pros::delay(250);
-  ch->pid_drive_set(-28, 127);
-  brain-> prerollerOnly = false;
-}
+  pros::delay(100); 
+  brain ->intakeOn = false;
+  brain-> descoreOn = false;
+  ch->pid_drive_set(-28.5, 127);
+  brain->intakeOn = true;
+} */
 
+void Block9_RR() {
+  Drive* ch = &robot->DriveTrain_.DriveTrain_.Chassis_;
+  robot->IsAutonomous = true;
+  brain = new AutonBrain(robot);
+  pros::Task tickTask(brainTick);
+  brain->SetAllianceAsRed(true);
+  ch->slew_drive_set(true);
+
+  TURN_SPEED = 60;
+  DRIVE_SPEED = 60;
+
+  brain->descoreOn = true;
+  ch->pid_drive_set(17, DRIVE_SPEED);
+  ch->pid_wait_quick_chain();
+  brain -> intakeOn = true;
+  brain->matchLoadOn = true;
+
+  ch->pid_drive_set(11.5, DRIVE_SPEED);
+  ch->pid_wait_quick_chain ();
+  ch->pid_turn_set(-120, TURN_SPEED);
+  ch->pid_wait_quick_chain();
+  brain-> prerollerOnly = true;
+  ch->pid_drive_set(31, DRIVE_SPEED);
+  ch->pid_wait_quick_chain();
+  ch->pid_turn_set(-172, TURN_SPEED);
+  ch->pid_wait_quick_chain();
+  brain-> prerollerOnly = false;
+  ch->pid_drive_set(13, 110);
+  ch->pid_wait_quick_chain();
+  ch->pid_drive_set(4.5, 120);
+  ch->pid_wait_quick_chain();
+  ch->pid_drive_set(4, 105);
+  ch->pid_wait_quick_chain();
+  pros::delay(1050);
+  brain ->intakeOn = false;
+  brain -> descoreOn = false;
+  ch->pid_turn_set(-169, TURN_SPEED); //turning left
+  ch->pid_wait_quick_chain();
+  ch->pid_drive_set(-28.5, 127);
+  ch->pid_wait();
+  brain->intakeOn = true;
+} 
 // . . .
 // Make your own autonomous functions here!
 // . . .

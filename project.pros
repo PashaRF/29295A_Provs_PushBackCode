@@ -1,7 +1,7 @@
 {
   "py/object": "pros.conductor.project.Project",
   "py/state": {
-    "project_name": "BLUE_SOLO",
+    "project_name": "7Block2.0",
     "target": "v5",
     "templates": {
       "EZ-Template": {
@@ -425,8 +425,8 @@
     },
     "upload_options": {
       "description": "First version of robot code for 29295A Pushback",
-      "icon": "pizza",
-      "slot": 3
+      "icon": "X",
+      "slot": 1
     },
     "use_early_access": false
   }

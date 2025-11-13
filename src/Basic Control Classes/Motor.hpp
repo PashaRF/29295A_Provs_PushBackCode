@@ -27,12 +27,12 @@ public:
 
     void Tick() {
 
-        if (std::abs(Motor_.get_actual_velocity()) / 1.5 < 10 && std::abs(MotorSpeed_) > 50) {
+        if (std::abs(Motor_.get_actual_velocity()) / 1.5 < 30 && std::abs(MotorSpeed_) > 50) {
             StalledTimer_++;
         }
         
         if (StalledTimer_ > 30) {
-            ReverseTimer_ = 20;
+            ReverseTimer_ = 100;
             StalledTimer_ = 0;
             Stalled_ = true;
 

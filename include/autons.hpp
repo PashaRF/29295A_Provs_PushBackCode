@@ -5,6 +5,7 @@ void testAuton(); //foward and back
 void driveAuton(); //forward, back, turn
 void turnAuton(); //turning only
 void  fullWP_RR(); // solo win point
+void Block9_RR();
 
 void drive_example();
 void turn_example();

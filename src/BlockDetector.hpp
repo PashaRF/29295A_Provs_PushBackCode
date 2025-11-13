@@ -18,7 +18,7 @@ private:
     
 
 public:
-    BlockDetector() : OpticalSensor_(20) {
+    BlockDetector() : OpticalSensor_(9) {
         SortOn();
     }
 
@@ -31,10 +31,10 @@ public:
             block = OpticalSensor_.GetBlock();
             switch (block)
             {
-            case OpticalSensor::BlockType::Red:
+            case OpticalSensor::BlockType::Blue:
                 badColour = !allianceColourRed;
                 break;
-            case OpticalSensor::BlockType::Blue:
+            case OpticalSensor::BlockType::Red:
                 badColour = allianceColourRed;
                 break;
             default:

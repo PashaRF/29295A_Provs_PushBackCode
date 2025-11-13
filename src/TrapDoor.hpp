@@ -26,17 +26,17 @@ class TrapDoor
             if (SortOn_ == true) {
                 if (BlockDetector_.GetBadColour() == true && TrapDoorOn_ == false) {
                     TrapDoorOn_= true;
-                    TrapDoor_.SetValue(true);
-                    TrapDoorDelay = 30;
+                   // TrapDoor_.SetValue(true);
+                    TrapDoorDelay = 40;
                 }
                 if (TrapDoorDelay == 0 && TrapDoorOn_ == true) {
                         if (BlockDetector_.GetBadColour() == false){
                             TrapDoorOn_ = false;
-                            TrapDoor_.SetValue(false);
+                      //      TrapDoor_.SetValue(false);
                             TrapDoorDelay = -1;
                         }
                         else {
-                            TrapDoorDelay = 20;
+                            TrapDoorDelay = 40;
                         }
                 }
                 else if (TrapDoorDelay > 0) {
