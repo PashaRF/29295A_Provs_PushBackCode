@@ -1,7 +1,7 @@
 {
   "py/object": "pros.conductor.project.Project",
   "py/state": {
-    "project_name": "7Block2.0",
+    "project_name": "Skils1",
     "target": "v5",
     "templates": {
       "EZ-Template": {
@@ -426,7 +426,7 @@
     "upload_options": {
       "description": "First version of robot code for 29295A Pushback",
       "icon": "X",
-      "slot": 1
+      "slot": 2
     },
     "use_early_access": false
   }

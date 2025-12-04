@@ -549,7 +549,7 @@ void fullWP_RR() {
   ch->pid_drive_set(-28.5, 127);
   brain->intakeOn = true;
 } */
-
+/*
 void Block9_RR() {
   Drive* ch = &robot->DriveTrain_.DriveTrain_.Chassis_;
   robot->IsAutonomous = true;
@@ -592,6 +592,66 @@ void Block9_RR() {
   ch->pid_wait();
   brain->intakeOn = true;
 } 
+  */
+ void Skills1() {
+  Drive* ch = &robot->DriveTrain_.DriveTrain_.Chassis_;
+  robot->IsAutonomous = true;
+  brain = new AutonBrain(robot);
+  pros::Task tickTask(brainTick);
+  brain->SetAllianceAsRed(true);
+  ch->slew_drive_set(true);
+
+  TURN_SPEED = 65;
+  DRIVE_SPEED = 65;
+  
+  brain->intakeOn = true;
+  brain->descoreOn = true;
+  brain->matchLoadOn = true;
+
+  ch->pid_drive_set(29, DRIVE_SPEED);
+  ch->pid_wait_quick_chain();
+  ch->pid_turn_set(90, TURN_SPEED);
+  ch->pid_wait_quick_chain();
+  ch->pid_drive_set(12, DRIVE_SPEED); //moves into matchload 1
+  ch->pid_wait_quick_chain();
+  ch->pid_drive_set(-5, DRIVE_SPEED); 
+  ch->pid_wait_quick_chain();
+  ch->pid_turn_set(0, TURN_SPEED);
+  ch->pid_wait_quick_chain();
+  ch->pid_drive_set(-10, DRIVE_SPEED); //away from wall
+  ch->pid_wait_quick_chain();
+  ch->pid_turn_set(90, TURN_SPEED); 
+  ch->pid_wait_quick_chain();
+  ch->pid_drive_set(-85, DRIVE_SPEED); //long run 1
+  ch->pid_wait_quick_chain();
+  ch->pid_turn_set(0, TURN_SPEED); 
+  ch->pid_wait_quick_chain();
+  ch->pid_drive_set(10, DRIVE_SPEED); 
+  ch->pid_wait_quick_chain();
+  brain->intakeOn = false;
+  ch->pid_turn_set(-90, TURN_SPEED); //facing goal
+  ch->pid_wait_quick_chain();
+
+  brain->descoreOn = false;
+  ch->pid_drive_set(-9, DRIVE_SPEED);
+  ch->pid_wait_quick_chain();
+  brain->intakeOn = true;  //score on goal
+  pros::delay(3000);
+
+  ch->pid_drive_set(12, DRIVE_SPEED);
+  ch->pid_wait_quick_chain();
+  brain->descoreOn = true;
+  brain->matchLoadOn = true;
+  ch->pid_drive_set(25, DRIVE_SPEED); //intakes from loader
+  ch->pid_wait_quick_chain();
+  ch->pid_drive_set(-28,  DRIVE_SPEED);
+  ch->pid_wait_quick_chain();
+  brain->intakeOn = false; 
+  ch->pid_drive_set(-16,  DRIVE_SPEED);
+  ch->pid_wait_quick_chain();
+  brain->descoreOn = false; 
+  brain->intakeOn = true; //finish filling long goal 1
+}
 // . . .
 // Make your own autonomous functions here!
 // . . .
