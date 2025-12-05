@@ -612,7 +612,7 @@ void Block9_RR() {
   ch->pid_wait_quick_chain();
   ch->pid_turn_set(90, TURN_SPEED);
   ch->pid_wait_quick_chain();
-  ch->pid_drive_set(12, DRIVE_SPEED); //moves into matchload 1
+  ch->pid_drive_set(72, DRIVE_SPEED); //moves into matchload 1
   ch->pid_wait_quick_chain();
   ch->pid_drive_set(-5, DRIVE_SPEED); 
   ch->pid_wait_quick_chain();
@@ -637,20 +637,103 @@ void Block9_RR() {
   ch->pid_wait_quick_chain();
   brain->intakeOn = true;  //score on goal
   pros::delay(3000);
-
   ch->pid_drive_set(12, DRIVE_SPEED);
   ch->pid_wait_quick_chain();
   brain->descoreOn = true;
-  brain->matchLoadOn = true;
-  ch->pid_drive_set(25, DRIVE_SPEED); //intakes from loader
+
+  ch->pid_drive_set(75, DRIVE_SPEED); //intakes from loader
   ch->pid_wait_quick_chain();
-  ch->pid_drive_set(-28,  DRIVE_SPEED);
+  ch->pid_drive_set(-16,  DRIVE_SPEED);
   ch->pid_wait_quick_chain();
   brain->intakeOn = false; 
-  ch->pid_drive_set(-16,  DRIVE_SPEED);
+  ch->pid_drive_set(-12,  DRIVE_SPEED);
   ch->pid_wait_quick_chain();
   brain->descoreOn = false; 
   brain->intakeOn = true; //finish filling long goal 1
+  pros::delay(3000);
+  ch->pid_drive_set(9, DRIVE_SPEED);
+  ch->pid_wait_quick_chain();
+  ch->pid_turn_set(180, TURN_SPEED); //facing towards other side of arena
+  ch->pid_wait_quick_chain();
+  brain->descoreOn = true;
+
+  ch->pid_drive_set(90, DRIVE_SPEED); //long run 2
+  ch->pid_wait_quick_chain();
+  ch->pid_turn_set(-91, TURN_SPEED); 
+  ch->pid_wait_quick_chain(); 
+
+  ch->pid_drive_set(75, DRIVE_SPEED); //moves into matchload 3
+  ch->pid_wait_quick_chain();
+  ch->pid_drive_set(-5, DRIVE_SPEED); 
+  ch->pid_wait_quick_chain();
+  ch->pid_turn_set(180, TURN_SPEED);
+  ch->pid_wait_quick_chain();
+  ch->pid_drive_set(-10, DRIVE_SPEED); //away from wall
+  ch->pid_wait_quick_chain();
+  ch->pid_turn_set(-90, TURN_SPEED); 
+  ch->pid_wait_quick_chain();
+  ch->pid_drive_set(-85, DRIVE_SPEED); //long run 3
+  ch->pid_wait_quick_chain();
+  ch->pid_turn_set(180, TURN_SPEED); 
+  ch->pid_wait_quick_chain();
+  ch->pid_drive_set(11, DRIVE_SPEED); 
+  ch->pid_wait_quick_chain();
+  brain->intakeOn = false;
+  ch->pid_turn_set(90, TURN_SPEED); //facing goal
+  ch->pid_wait_quick_chain();
+
+  brain->descoreOn = false;
+  ch->pid_drive_set(-9, DRIVE_SPEED);
+  ch->pid_wait_quick_chain();
+  brain->intakeOn = true;  //score on goal
+  pros::delay(3000);
+  ch->pid_drive_set(12, DRIVE_SPEED);
+  ch->pid_wait_quick_chain();
+  brain->descoreOn = true;
+
+  ch->pid_drive_set(75, DRIVE_SPEED); //intakes from loader 4
+  ch->pid_wait_quick_chain();
+  ch->pid_drive_set(-16,  DRIVE_SPEED);
+  ch->pid_wait_quick_chain();
+  brain->intakeOn = false; 
+  ch->pid_drive_set(-12,  DRIVE_SPEED);
+  ch->pid_wait_quick_chain();
+  brain->descoreOn = false; 
+  brain->intakeOn = true; //finish filling long goal 2
+  pros::delay(3000);
+  ch->pid_drive_set(12,  DRIVE_SPEED);
+  ch->pid_wait_quick_chain();
+  ch->pid_turn_set(30, TURN_SPEED);
+  ch->pid_wait_quick_chain();
+  brain->matchLoadOn = false;
+  brain->intakeReverseOn = true;
+  ch->pid_drive_set(32, DRIVE_SPEED);
+  ch->pid_wait_quick_chain();
+  ch->pid_turn_set(0, TURN_SPEED);
+  ch->pid_wait_quick_chain();
+  ch->pid_drive_set(40, 110);
+  ch->pid_wait_quick_chain();
+  pros::delay(1000);
+  ch->pid_turn_set(-90, 120);
+  ch->pid_wait_quick_chain();
+  ch->pid_turn_set(180, 120);
+  ch->pid_wait_quick_chain();
+  ch->pid_turn_set(90, 120);
+  ch->pid_wait_quick_chain();
+  ch->pid_turn_set(0, 120);
+  ch->pid_wait_quick_chain();
+
+
+ /* for (int i; i < 100; i++) {
+  ch->pid_turn_set(180, TURN_SPEED); 
+  ch->pid_wait_quick_chain();
+  ch->pid_turn_set(-90, TURN_SPEED); 
+  ch->pid_wait_quick_chain();
+  ch->pid_turn_set(0, TURN_SPEED); 
+  ch->pid_wait_quick_chain();
+  ch->pid_turn_set(90, TURN_SPEED); 
+  ch->pid_wait_quick_chain();
+  } */
 }
 // . . .
 // Make your own autonomous functions here!
