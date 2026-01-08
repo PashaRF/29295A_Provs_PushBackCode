@@ -20,37 +20,25 @@ public:
     bool intakeOn = false;
     bool descoreOn = false;
     bool matchLoadOn = false;
-    bool doubleParkOn = false;
-    bool wingsOn = false;
     bool prerollerOnly = false;
     bool intakeReverseOn = false;
-    bool intakeMiddleOn = false;
     void Tick()
     {
         Robot_->InputTick();
-        if (intakeMiddleOn) {
-            if(prerollerOnly) {
-                Robot_->Intake_.PreRollForward();
-            }
-            else {
-                Robot_->Intake_.M_Forward();
-            }
-        }
-        else if (intakeOn) {
-            if(prerollerOnly) {
-                Robot_->Intake_.PreRollForward();
-            }
-            else {
-                Robot_->Intake_.Forward();
-            }
-        }
-        else if (intakeReverseOn)
+        if (intakeReverseOn) {
             if(prerollerOnly) {
                 Robot_->Intake_.PreRollReverse();
             }
             else {
                 Robot_->Intake_.Reverse();
             }
+        }
+        else if (intakeOn) { 
+            if(prerollerOnly) {
+                Robot_->Intake_.PreRollForward();
+            }
+            Robot_->Intake_.Forward();
+        }
         else {
             Robot_->Intake_.Stop();
         }
@@ -65,18 +53,6 @@ public:
         }
         else {
             Robot_->MatchLoad_.Deactivate();
-        }
-         if (wingsOn) {
-            Robot_->Wings_.Activate();
-        }
-        else {
-            Robot_->Wings_.Deactivate();
-        }
-        if (doubleParkOn) {
-            Robot_->DoublePark_.Activate();
-        }
-        else {
-            Robot_->DoublePark_.Deactivate();
         }
         Robot_->AutonOutputTick();
     }

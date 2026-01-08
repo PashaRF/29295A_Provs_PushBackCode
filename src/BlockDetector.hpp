@@ -11,23 +11,21 @@ private:
     OpticalSensor::BlockType block = OpticalSensor::BlockType::None;
 
     bool badColour = false;
-    int trapDoorTimer = 5;
+    int timer = 5;
 
     OpticalSensor OpticalSensor_;
-//  DistanceSensor DistanceSensor_;
-    
 
 public:
     BlockDetector() : OpticalSensor_(9) {
         SortOn();
     }
 
-    void Tick() {
+    void InputTick() {
         OpticalSensor_.Tick();
 
         if (!colourSort) return;
 
-        if (trapDoorTimer == 0) {
+        if (timer == 0) {
             block = OpticalSensor_.GetBlock();
             switch (block)
             {
@@ -41,12 +39,16 @@ public:
                 badColour = false;
                 break;
             } 
-            trapDoorTimer = 5;
+            timer = 5;
             block = OpticalSensor::BlockType::None;
         }
         else {
-            trapDoorTimer--;
+            timer--;
         }        
+    }
+
+    void OutputTick() {
+
     }
 
     void SortOn() {
@@ -58,8 +60,8 @@ public:
         OpticalSensor_.LEDoff();
     }
 
-    int GetTrapDoorTimer() {
-        return trapDoorTimer;
+    int GetTimer() {
+        return timer;
     }
 
     bool GetBadColour() {
