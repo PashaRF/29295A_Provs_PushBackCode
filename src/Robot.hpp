@@ -28,7 +28,7 @@ public:
           MatchLoad_('B'),
           Intake_(Motor(12), Motor(-14)),
           DriveTrain_()
-          //optical in 19, distance in 17
+          //optical in ___, distance in ____
 
     {
         BlockDetector_.SortOn();

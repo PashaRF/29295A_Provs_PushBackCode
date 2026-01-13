@@ -26,8 +26,8 @@ public:
 
     HoldButton R1_;
     HoldButton R2_;
-    HoldButton L1_;
-    HoldButton L2_;
+    TapButton L1_;
+    TapButton L2_;
 
     ToggleButton A_;
     TapButton B_;

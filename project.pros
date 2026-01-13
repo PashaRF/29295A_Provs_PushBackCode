@@ -1,7 +1,7 @@
 {
   "py/object": "pros.conductor.project.Project",
   "py/state": {
-    "project_name": "NewCode",
+    "project_name": "Swing Test",
     "target": "v5",
     "templates": {
       "EZ-Template": {
@@ -425,8 +425,8 @@
     },
     "upload_options": {
       "description": "First version of robot code for 29295A Pushback",
-      "icon": "robot",
-      "slot": 1
+      "icon": "pros",
+      "slot": 5
     },
     "use_early_access": false
   }

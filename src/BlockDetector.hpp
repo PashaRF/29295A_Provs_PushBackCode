@@ -11,7 +11,8 @@ private:
     OpticalSensor::BlockType block = OpticalSensor::BlockType::None;
 
     bool badColour = false;
-    int timer = 5;
+    int timeLength = 5;
+    int timer = timeLength;
 
     OpticalSensor OpticalSensor_;
 
@@ -39,7 +40,7 @@ public:
                 badColour = false;
                 break;
             } 
-            timer = 5;
+            timer = timeLength;
             block = OpticalSensor::BlockType::None;
         }
         else {

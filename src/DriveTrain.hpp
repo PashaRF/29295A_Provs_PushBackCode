@@ -58,10 +58,10 @@ public:
     DriveTrain()
         :Chassis_(
             // These are your drive motors, the first motor is used for sensing!
-            { -1, -3, -6},     // Left Chassis Ports (negative port will reverse it!)
-            { 5, 10, 7},  // Right Chassis Ports (negative port will reverse it!)
+            { -1, 6, -7},     // Left Chassis Ports (negative port will reverse it!)
+            { 11, -14, 19},  // Right Chassis Ports (negative port will reverse it!)
 
-            19,      // IMU Port
+            10,      // IMU Port
             3.25,  // Wheel Diameter (Remember, 4" wheels without screw holes are actually 4.125!)
             450)
     {

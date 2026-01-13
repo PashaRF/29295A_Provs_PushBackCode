@@ -20,23 +20,14 @@ public:
     bool intakeOn = false;
     bool descoreOn = false;
     bool matchLoadOn = false;
-    bool prerollerOnly = false;
     bool intakeReverseOn = false;
     void Tick()
     {
         Robot_->InputTick();
         if (intakeReverseOn) {
-            if(prerollerOnly) {
-                Robot_->Intake_.PreRollReverse();
-            }
-            else {
-                Robot_->Intake_.Reverse();
-            }
+            Robot_->Intake_.Reverse();
         }
         else if (intakeOn) { 
-            if(prerollerOnly) {
-                Robot_->Intake_.PreRollForward();
-            }
             Robot_->Intake_.Forward();
         }
         else {

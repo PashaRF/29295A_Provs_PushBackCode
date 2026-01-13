@@ -43,7 +43,7 @@ public:
 
         if (HalfSpeed)
         {
-            powerC *= 0.75;
+            powerC *= 0.55;
         }
 
         //assigns motor speeds
