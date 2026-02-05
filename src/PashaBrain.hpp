@@ -15,7 +15,8 @@ private:
     //piston boolean values
     bool DeScoreOn_ = false;
     bool MatchLoadOn_ = false;
-    bool prerollerOnly_ = false;
+    bool MiddleGoalOn_ = false;
+    bool BlockHolderOn_ = false;
 
 public:
     PashaBrain(Robot* Robot)
@@ -49,23 +50,34 @@ public:
         else {
             Robot_->Intake_.Stop();
         }
-        if (Controller_.L1_.WasTapped()) {
+        if (Controller_.B_.WasTapped()) { 
             MatchLoadOn_ = !MatchLoadOn_; 
         }
-        if (Controller_.L2_.WasTapped()) {
+        if (Controller_.Y_.WasTapped()) { 
             DeScoreOn_ = !DeScoreOn_;
         }
-
+        if (Controller_.L1_.WasTapped()) {
+            BlockHolderOn_ = !BlockHolderOn_;
+        }
+        if (Controller_.L2_.WasTapped()) {
+            MiddleGoalOn_ = !MiddleGoalOn_;
+            if (MiddleGoalOn_) {
+                BlockHolderOn_ = true;
+            }
+        }
+        
         //
         //pistons
         //
         if (Controller_.Up_.WasTapped()) {
-            Robot_->HalfSpeed = !Robot_->HalfSpeed; // if we need half speed for some reason
+            Robot_->HalfSpeed = !Robot_->HalfSpeed;
             Controller_.Vibrate();
         }
 
         Robot_->Descore_.SetValue(DeScoreOn_);
         Robot_->MatchLoad_.SetValue(MatchLoadOn_);
+        Robot_->MiddleGoal_.SetValue(MiddleGoalOn_);
+        Robot_->BlockHolder_.SetValue(BlockHolderOn_);
         Robot_->OutputTick();
     }
 };

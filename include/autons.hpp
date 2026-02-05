@@ -1,11 +1,11 @@
 #pragma once
 
-void fullWP_RR(); // solo win point
-void Block9_RR();
-void Skills1(); //skills 
+void SoloAWP(); // 
+void _7Block(); // -- S-Bot Autons --
+void Skills();  // 
 
-void drive_test();
-void turn_test();
-void drive_and_turn_test();
-void wait_until_change_speed();
-void swing_test();
+void drive_test(); // Drive 24_in forward and back
+void turn_test(); // Turn 90_deg to -45_deg and back
+void drive_and_turn_test(); // Combination of previous two functions
+void wait_until_change_speed(); // Reaches full speed after 6_in, drive forward + back
+void swing_test(); //Swings in 'S' shape 24_in forward and back

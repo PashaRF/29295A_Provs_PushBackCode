@@ -21,6 +21,9 @@ public:
     bool descoreOn = false;
     bool matchLoadOn = false;
     bool intakeReverseOn = false;
+    bool blockHolderOn = false;
+    bool middleGoalOn = false;
+
     void Tick()
     {
         Robot_->InputTick();
@@ -45,6 +48,18 @@ public:
         else {
             Robot_->MatchLoad_.Deactivate();
         }
+        if (blockHolderOn) {
+            Robot_->BlockHolder_.Activate();
+        }
+        else {
+            Robot_->BlockHolder_.Deactivate();            
+        }
+        if (middleGoalOn) {
+            Robot_->MiddleGoal_.Activate();
+        }
+        else {
+            Robot_->MiddleGoal_.Deactivate();        
+        } 
         Robot_->AutonOutputTick();
     }
     

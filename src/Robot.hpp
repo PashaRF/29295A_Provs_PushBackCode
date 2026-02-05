@@ -13,6 +13,8 @@ class Robot
 public:
     Pistonf Descore_;
     Pistonf MatchLoad_;
+     Pistonf BlockHolder_;
+     Pistonf MiddleGoal_;
     BlockDetector BlockDetector_;
 
     Intake Intake_;
@@ -24,11 +26,14 @@ public:
 
 public:
     Robot()
-        : Descore_('A'),
-          MatchLoad_('B'),
-          Intake_(Motor(12), Motor(-14)),
+        : Descore_('C'),
+          MatchLoad_('D'),
+          BlockHolder_('A'),
+          MiddleGoal_('B'),
+          Intake_(Motor(12), Motor(-15)),
           DriveTrain_()
-          //optical in ___, distance in ____
+          //imu in 10
+          //optical in 9, distance in ____
 
     {
         BlockDetector_.SortOn();

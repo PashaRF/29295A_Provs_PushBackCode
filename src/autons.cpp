@@ -7,7 +7,7 @@
 /////
 
 // These are out of 127
-int DRIVE_SPEED =110;
+int DRIVE_SPEED = 110;
 int TURN_SPEED = 90;
 const int SWING_SPEED = 110;
 
@@ -56,15 +56,12 @@ void turn_test() {
 
   ch->pid_turn_set(90, TURN_SPEED);
   ch->pid_wait_quick_chain();
-  ch->pid_turn_set(45, TURN_SPEED);
+  ch->pid_turn_set(-45, TURN_SPEED);
   ch->pid_wait_quick_chain();
   ch->pid_turn_set(0, TURN_SPEED);
   ch->pid_wait_quick_chain();
 }
 
-///
-// Combining Turn + Drive
-///
 void drive_and_turn_test() {
   Drive* ch = &robot->DriveTrain_.DriveTrain_.Chassis_;
   robot->IsAutonomous = true;
@@ -87,9 +84,6 @@ void drive_and_turn_test() {
   ch->pid_wait_quick_chain();
 }
 
-///
-// Wait Until and Changing Max Speed
-///
 void wait_until_change_speed() {
   // pid_wait_until will wait until the robot gets to a desired position
   // When the robot gets to 6 inches slowly, the robot will travel the remaining distance at full speed
@@ -145,8 +139,8 @@ void swing_test() {
 }
 
 #pragma endregion
-#pragma region Prerebuild Autons
-void fullWP_RR() {
+#pragma region S-Bot Autons
+void SoloAWP() {
   Drive* ch = &robot->DriveTrain_.DriveTrain_.Chassis_;
   robot->IsAutonomous = true;
   brain = new AutonBrain(robot);
@@ -224,7 +218,7 @@ void fullWP_RR() {
   brain->intakeOn = true;
 } 
 
-void Block9_RR() {
+void _7Block() {
   Drive* ch = &robot->DriveTrain_.DriveTrain_.Chassis_;
   robot->IsAutonomous = true;
   brain = new AutonBrain(robot);
@@ -267,7 +261,7 @@ void Block9_RR() {
   brain->intakeOn = true;
 } 
 
-void Skills1() {
+void Skills() {
   Drive* ch = &robot->DriveTrain_.DriveTrain_.Chassis_;
   robot->IsAutonomous = true;
   brain = new AutonBrain(robot);
