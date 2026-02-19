@@ -7,9 +7,9 @@
 /////
 
 // These are out of 127
-int DRIVE_SPEED = 110;
+int DRIVE_SPEED = 90;
 int TURN_SPEED = 90;
-const int SWING_SPEED = 110;
+const int SWING_SPEED = 90;
 
 extern Robot* robot;
 AutonBrain* brain;
@@ -34,13 +34,15 @@ void drive_test() {
   pros::Task tickTask(brainTick);
   brain->SetAllianceAsRed(true);
   ch->slew_drive_set(true);
-
+  for (int i; i<7; i++) {
   ch->pid_drive_set(24, DRIVE_SPEED);
   ch->pid_wait_quick_chain();
-  ch->pid_drive_set(-12, DRIVE_SPEED);
+  //ch->pid_drive_set(12, DRIVE_SPEED);
+  //ch->pid_wait();
+  ch->pid_drive_set(-24, DRIVE_SPEED);
   ch->pid_wait_quick_chain();
-  ch->pid_drive_set(-12, DRIVE_SPEED);
-  ch->pid_wait_quick_chain();
+  //ch->pid_wait();
+  }
 }
 
 void turn_test() {
@@ -52,14 +54,14 @@ void turn_test() {
   brain = new AutonBrain(robot);
   pros::Task tickTask(brainTick);
   brain->SetAllianceAsRed(true);
-  ch->slew_drive_set(true);
+  ch->slew_drive_set(false);
 
   ch->pid_turn_set(90, TURN_SPEED);
-  ch->pid_wait_quick_chain();
+  ch->pid_wait();
   ch->pid_turn_set(-45, TURN_SPEED);
-  ch->pid_wait_quick_chain();
+  ch->pid_wait();
   ch->pid_turn_set(0, TURN_SPEED);
-  ch->pid_wait_quick_chain();
+  ch->pid_wait();
 }
 
 void drive_and_turn_test() {
@@ -128,13 +130,21 @@ void swing_test() {
   brain->SetAllianceAsRed(true);
   ch->slew_drive_set(true);
 
-  ch->pid_swing_set(ez::LEFT_SWING, 45, SWING_SPEED, 45);
+  ch->pid_swing_set(ez::LEFT_SWING, 45, SWING_SPEED, 35);
   ch->pid_wait_quick_chain();
-  ch->pid_swing_set(ez::RIGHT_SWING, 0, SWING_SPEED, 45);
+  ch->pid_swing_set(ez::RIGHT_SWING, 0, SWING_SPEED, 35);
   ch->pid_wait_quick_chain();
-  ch->pid_swing_set(ez::RIGHT_SWING, 45, SWING_SPEED, 45);
+  ch->pid_swing_set(ez::LEFT_SWING, -45, SWING_SPEED, 35);
   ch->pid_wait_quick_chain();
-  ch->pid_swing_set(ez::LEFT_SWING, 0, SWING_SPEED, 45);
+  ch->pid_swing_set(ez::RIGHT_SWING, 0, SWING_SPEED, 35);
+  ch->pid_wait_quick_chain();
+  ch->pid_swing_set(ez::RIGHT_SWING, -45, SWING_SPEED, 35);
+  ch->pid_wait_quick_chain();
+  ch->pid_swing_set(ez::LEFT_SWING, 0, SWING_SPEED, 35);
+  ch->pid_wait_quick_chain();
+  ch->pid_swing_set(ez::RIGHT_SWING, 45, SWING_SPEED, 35);
+  ch->pid_wait_quick_chain();
+  ch->pid_swing_set(ez::LEFT_SWING, 0, SWING_SPEED, 35);
   ch->pid_wait_quick_chain();
 }
 

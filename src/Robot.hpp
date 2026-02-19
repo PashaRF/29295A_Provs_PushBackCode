@@ -26,14 +26,13 @@ public:
 
 public:
     Robot()
-        : Descore_('C'),
-          MatchLoad_('D'),
+        : Descore_('D'),
+          MatchLoad_('C'),
           BlockHolder_('A'),
           MiddleGoal_('B'),
           Intake_(Motor(12), Motor(-15)),
           DriveTrain_()
-          //imu in 10
-          //optical in 9, distance in ____
+          //imu in 5, optical in _____ , distance in ____
 
     {
         BlockDetector_.SortOn();
