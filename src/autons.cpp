@@ -402,6 +402,291 @@ void Skills() {
   ch->pid_wait_quick_chain();
   #pragma endregion
 }
+
+#pragma region Provs Autons
+void SkillsProvs() {
+  Drive* ch = &robot->DriveTrain_.DriveTrain_.Chassis_;
+  robot->IsAutonomous = true;
+  brain = new AutonBrain(robot);
+  pros::Task tickTask(brainTick);
+  brain->SetAllianceAsRed(true);
+  ch->slew_drive_set(true);
+
+  brain->intakeOn = true;
+//  brain->blockHolderOn = true;
+  ch->pid_drive_set(24.5, 60);
+  ch->pid_wait_until(10_in);
+  ch->pid_speed_max_set(DRIVE_SPEED);
+  brain->intakeOn = false;              // intakes mid block 1
+  ch->pid_wait_quick_chain();
+  ch->pid_turn_set(-95, TURN_SPEED);
+  ch->pid_wait_quick_chain();
+  brain->intakeOn = true;
+  ch->pid_drive_set(-18, DRIVE_SPEED);
+  ch->pid_wait_until(-15_in);
+  brain->middleGoalOn = true;
+  ch->pid_wait_quick_chain();
+  pros::delay(2000);                    // score on middle goal
+  ch->pid_drive_set(46, DRIVE_SPEED);
+  ch->pid_wait_until(30_in);
+  brain->middleGoalOn = false;
+  ch->pid_wait_quick_chain();
+  ch->pid_turn_set(-145, TURN_SPEED);   // bad angle >:(
+  ch->pid_wait_quick_chain();
+  brain->matchLoadOn = true;
+  ch->pid_drive_set(12.5, DRIVE_SPEED);   // enter matchload 1
+  ch->pid_wait_quick_chain();
+  pros::delay(2000);   
+  ch->pid_swing_set(ez::LEFT_SWING, -178, SWING_SPEED, 15); //175
+  ch->pid_wait_quick_chain();
+  ch->pid_swing_set(ez::RIGHT_SWING, -146, SWING_SPEED, 55);
+  ch->pid_wait_quick_chain();
+  brain->matchLoadOn = false;
+  brain->intakeOn = false;
+  ch->pid_drive_set(-51, DRIVE_SPEED);   // moves down corridor 
+  ch->pid_wait_quick_chain();
+  ch->pid_swing_set(ez::RIGHT_SWING, 35, SWING_SPEED, -12);
+  ch->pid_wait_quick_chain(); 
+  ch->pid_drive_set(-8, DRIVE_SPEED);    
+  ch->pid_wait_quick_chain();
+  brain->intakeOn = true;
+  brain->blockHolderOn = true;
+  pros::delay(3000);                    // scores on long goal 1
+ // ch->pid_turn_set(34, TURN_SPEED);   
+ // ch->pid_wait_quick_chain();
+  ch->pid_drive_set(27.5, DRIVE_SPEED);
+  brain->matchLoadOn = true;
+  ch->pid_wait_until(7_in);
+  brain->blockHolderOn = false;
+  ch->pid_wait_quick_chain();
+  pros::delay(2000);                    // intakes from matchload 2
+ // ch->pid_turn_set(34, TURN_SPEED);   
+ // ch->pid_wait_quick_chain();
+  ch->pid_drive_set(-30, DRIVE_SPEED);   
+  ch->pid_wait_until(-20_in);
+  brain->blockHolderOn = true;
+  ch->pid_wait_quick_chain();
+  brain->matchLoadOn = false;
+  pros::delay(3000);                    // fills long goal 1
+  brain->intakeOn = false;
+  brain->blockHolderOn = false;
+  ch->pid_swing_set(ez::LEFT_SWING, 115, SWING_SPEED, 55);
+  ch->pid_wait_quick_chain();
+  brain->intakeOn = true;
+  brain->blockHolderOn = false;
+  ch->pid_drive_set(60, 105);
+  ch->pid_wait_until(40_in);
+  ch->pid_speed_max_set(45);   
+  ch->pid_wait_quick_chain();
+  ch->pid_drive_set(-18, 50);         // aligns with park barrier 
+  ch->pid_wait_quick_chain();
+  brain->intakeOn = false;
+}
+
+void SoloProvs() {
+  Drive* ch = &robot->DriveTrain_.DriveTrain_.Chassis_;
+  robot->IsAutonomous = true;
+  brain = new AutonBrain(robot);
+  pros::Task tickTask(brainTick);
+  brain->SetAllianceAsRed(true);
+  ch->slew_drive_set(true);
+
+  DRIVE_SPEED = 100;
+
+  brain->intakeOn = true;
+  brain->blockHolderOn = false;
+  brain->matchLoadOn = true;
+  ch->pid_drive_set(29, DRIVE_SPEED);   
+  ch->pid_wait_quick_chain();
+  ch->pid_turn_set(90, TURN_SPEED);   
+  ch->pid_wait_quick_chain();
+  ch->pid_drive_set(5, DRIVE_SPEED);   
+  ch->pid_wait_quick_chain();
+  pros::delay(600);                   // emptys match load 1
+  ch->pid_drive_set(-30, DRIVE_SPEED); 
+  ch->pid_wait_until(-20_in);  
+  brain->blockHolderOn = true;
+  ch->pid_wait_quick_chain();
+  brain->matchLoadOn = false;
+  pros::delay(1250);                    // fills long goal 1
+  brain-> blockHolderOn = false;
+  ch->pid_swing_set(ez::LEFT_SWING, 235, SWING_SPEED, 5);
+  ch->pid_wait_quick_chain();
+  ch->pid_swing_set(ez::RIGHT_SWING, 180, SWING_SPEED, 38);
+  ch->pid_wait_quick_chain();
+  ch->pid_drive_set(31, DRIVE_SPEED); 
+  ch->pid_wait_until(16_in);
+  brain->intakeOn = false;
+  brain->matchLoadOn = true;
+  ch->pid_wait_quick_chain();
+  ch->pid_turn_set(140, TURN_SPEED);   
+  ch->pid_wait_quick_chain();
+  ch->pid_drive_set(-17.5, DRIVE_SPEED);  
+  ch->pid_wait_until(-11_in); 
+  brain->intakeOn = true;
+  brain->middleGoalOn = true;
+  ch->pid_wait_quick_chain();
+  pros::delay(1000);                  // scores middle goal
+  brain->middleGoalOn = false;
+  ch->pid_drive_set(48.5, DRIVE_SPEED);
+  ch->pid_wait_quick_chain();
+  ch->pid_turn_set(95, TURN_SPEED); // 92
+  ch->pid_wait_quick_chain();
+  ch->pid_drive_set(7.5, DRIVE_SPEED);   // enter matchload 2
+  ch->pid_wait_quick_chain();
+  pros::delay(400);
+  ch->pid_drive_set(-29, DRIVE_SPEED);   
+  ch->pid_wait_until(-20_in);
+  brain->blockHolderOn = true;
+  ch->pid_wait_quick_chain();
+  brain->matchLoadOn = false;
+}
+
+void SixThreeProvs() {
+  Drive* ch = &robot->DriveTrain_.DriveTrain_.Chassis_;
+  robot->IsAutonomous = true;
+  brain = new AutonBrain(robot);
+  pros::Task tickTask(brainTick);
+  brain->SetAllianceAsRed(true);
+  ch->slew_drive_set(true);
+
+  DRIVE_SPEED = 100;
+
+  brain->intakeOn = true;
+  brain->blockHolderOn = false;
+  ch->pid_drive_set(20, DRIVE_SPEED);
+  ch->pid_wait_until(6_in);
+  brain->matchLoadOn = true;
+  ch->pid_wait_quick_chain();
+  ch->pid_turn_set(-15, TURN_SPEED);   
+  ch->pid_wait_quick_chain();
+  brain->matchLoadOn = false;
+  ch->pid_drive_set(25.5, DRIVE_SPEED);
+  ch->pid_wait_until(18_in);
+  brain->matchLoadOn = true;
+  ch->pid_wait();
+  ch->pid_drive_set(-31.5, DRIVE_SPEED);
+  ch->pid_wait_quick_chain();
+  ch->pid_turn_set(-60, TURN_SPEED);   
+  ch->pid_wait_quick_chain();
+  ch->pid_drive_set(33, DRIVE_SPEED);
+  ch->pid_wait_quick_chain();
+  ch->pid_turn_set(-145, TURN_SPEED);   
+  ch->pid_wait_quick_chain();
+   /* ch->pid_swing_set(ez::RIGHT_SWING, -37, SWING_SPEED, 35);
+  ch->pid_wait(); 
+  brain->matchLoadOn = true;
+  pros::delay(350);
+  ch->pid_turn_set(-55, TURN_SPEED);   
+  ch->pid_wait_quick_chain();
+  ch->pid_swing_set(ez::RIGHT_SWING, 40, SWING_SPEED, 30);
+  ch->pid_wait_quick_chain();
+  ch->pid_swing_set(ez::RIGHT_SWING, 225, SWING_SPEED, 26);
+  ch->pid_wait_quick_chain();
+  /*
+  ch->pid_drive_set(8, DRIVE_SPEED);
+  ch->pid_wait_quick_chain();
+  brain->blockHolderOn = true;
+  pros::delay(1300);                    // scores long goal
+  brain->blockHolderOn = false;
+  ch->pid_drive_set(27.5, DRIVE_SPEED);
+  ch->pid_wait_quick_chain();
+  pros::delay(650);
+  ch->pid_drive_set(7.5, DRIVE_SPEED);   // enter matchload 
+  ch->pid_wait_quick_chain();
+  ch->pid_turn_set(-105, TURN_SPEED);   
+  ch->pid_wait_quick_chain();
+  brain->intakeOn = false;
+  ch->pid_drive_set(-48.5, DRIVE_SPEED);
+  ch->pid_wait_quick_chain();
+  brain->intakeOn = true;
+  brain->middleGoalOn = true;
+  pros::delay(1600);                      // scores middle goal
+  ch->pid_drive_set(-37.5, DRIVE_SPEED);
+  ch->pid_wait_quick_chain();
+  brain->intakeOn = false;
+  brain->middleGoalOn = false;
+  ch->pid_turn_set(-150, TURN_SPEED);    // aligns to goal
+  ch->pid_wait_quick_chain();
+  brain->middleGoalOn = false;
+  brain->descoreOn = true;
+  ch->pid_drive_set(-12, 50);
+  ch->pid_wait_quick_chain();
+  ch->pid_turn_set(-130, TURN_SPEED);   
+  ch->pid_wait_quick_chain();
+  */
+}
+
+void SixPushProvs() {
+  Drive* ch = &robot->DriveTrain_.DriveTrain_.Chassis_;
+  robot->IsAutonomous = true;
+  brain = new AutonBrain(robot);
+  pros::Task tickTask(brainTick);
+  brain->SetAllianceAsRed(true);
+  ch->slew_drive_set(true);
+
+  DRIVE_SPEED = 100;
+
+  brain->intakeOn = true;
+  brain->blockHolderOn = false;
+  ch->pid_drive_set(20, DRIVE_SPEED);
+  ch->pid_wait_until(9_in);
+  brain->matchLoadOn = true;
+  ch->pid_wait_quick_chain();
+  ch->pid_turn_set(-105, TURN_SPEED);   
+  ch->pid_wait_quick_chain();
+  /*
+  ch->pid_drive_set(20, DRIVE_SPEED);
+  ch->pid_wait_quick_chain();
+  ch->pid_turn_set(-150, TURN_SPEED);   
+  ch->pid_wait_quick_chain();
+  ch->pid_drive_set(8, DRIVE_SPEED);
+  ch->pid_wait_quick_chain();
+  pros::delay(700);
+  ch->pid_drive_set(-27.5, DRIVE_SPEED);
+  ch->pid_wait_quick_chain();
+  brain->blockHolderOn = false;
+  pros::delay(1600);
+  ch->pid_swing_set(ez::RIGHT_SWING, 30, SWING_SPEED, 35);
+  ch->pid_wait_quick_chain();
+  ch->pid_drive_set(-12, 50);
+  ch->pid_wait_quick_chain();
+  ch->pid_turn_set(-130, TURN_SPEED);   
+  ch->pid_wait_quick_chain();
+  */
+}
+
+void SwingTest() {
+  Drive* ch = &robot->DriveTrain_.DriveTrain_.Chassis_;
+  robot->IsAutonomous = true;
+  brain = new AutonBrain(robot);
+  pros::Task tickTask(brainTick);
+  brain->SetAllianceAsRed(true);
+  ch->slew_drive_set(true);
+
+  DRIVE_SPEED = 100;
+
+  brain->intakeOn = true;
+  brain->blockHolderOn = false;
+  ch->pid_swing_set(ez::RIGHT_SWING, 90, SWING_SPEED, 50);
+  ch->pid_wait_quick_chain();
+}
+
+void OffLineProvs() {
+  Drive* ch = &robot->DriveTrain_.DriveTrain_.Chassis_;
+  robot->IsAutonomous = true;
+  brain = new AutonBrain(robot);
+  pros::Task tickTask(brainTick);
+  brain->SetAllianceAsRed(true);
+  ch->slew_drive_set(true);
+
+  DRIVE_SPEED = 100;
+
+  ch->pid_drive_set(6, DRIVE_SPEED);
+  ch->pid_wait_quick_chain();
+}
+
+#pragma endregion
 // . . .
 // Make your own autonomous functions here!
 // . . .

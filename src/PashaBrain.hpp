@@ -50,6 +50,11 @@ public:
         else {
             Robot_->Intake_.Stop();
         }
+
+        //
+        //pistons
+        //
+
         if (Controller_.Down_.WasTapped()) { //switch to right (broken?)
             MiddleGoalOn_ = !MiddleGoalOn_;
             if (MiddleGoalOn_) {
@@ -65,37 +70,6 @@ public:
         if (Controller_.Y_.WasTapped()) {
             BlockHolderOn_ = !BlockHolderOn_;
         }
-        
-        
-        /*
-        if (Controller_.R1_.IsPressed()) {
-            Robot_->Intake_.Reverse();
-        }
-        else if (Controller_.R2_.IsPressed()) {
-            Robot_->Intake_.Forward();
-        }
-        else {
-            Robot_->Intake_.Stop();
-        }
-        if (Controller_.B_.WasTapped()) { 
-            MatchLoadOn_ = !MatchLoadOn_; 
-        }
-        if (Controller_.Y_.WasTapped()) { 
-            DeScoreOn_ = !DeScoreOn_;
-        }
-        if (Controller_.L1_.WasTapped()) {
-            BlockHolderOn_ = !BlockHolderOn_;
-        }
-        if (Controller_.L2_.WasTapped()) {
-            MiddleGoalOn_ = !MiddleGoalOn_;
-            if (MiddleGoalOn_) {
-                BlockHolderOn_ = false;
-            }
-        }
-        */
-        //
-        //pistons
-        //
         if (Controller_.Up_.WasTapped()) {
             Robot_->HalfSpeed = !Robot_->HalfSpeed;
             Controller_.Vibrate();

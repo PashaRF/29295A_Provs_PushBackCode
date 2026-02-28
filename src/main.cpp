@@ -25,15 +25,21 @@ ez::as::auton_selector.autons_add({
 // -- AUTONS --
 //
 
-//{"Drive Test", drive_test},
-//{"Turn Test", turn_test},
+{"Solo AWP", SoloProvs},
+//{"Six Three", SixThreeProvs} 
+//{"Six Push", SixPushProvs}
+//{"Skills", SkillsProvs}, 
+//{"Off Line", OffLineProvs},
+//{"Swing Test", SwingTest},
+
+// {"Drive Test", drive_test},
+// {"Turn Test", turn_test},
 // {"Drive and Turn", drive_and_turn_test},
 // {"Speed Test",wait_until_change_speed},
- {"Swing Test", swing_test},
-
-//{"Solo AWP", SoloAWP},
+// {"Swing Test", swing_test},
+// {"Solo AWP", SoloAWP},
 // {"7 Block", _7Block},
-//{"Skills", Skills},
+// {"Skills", Skills},
 
 //
 // -- AUTONS --

@@ -44,6 +44,7 @@ public:
         if (HalfSpeed)
         {
             powerC *= 0.55;
+          //  turnC *= 0.1; //watch 
         }
 
         //assigns motor speeds

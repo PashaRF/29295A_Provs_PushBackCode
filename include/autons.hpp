@@ -1,5 +1,12 @@
 #pragma once
 
+void SkillsProvs(); 
+void SoloProvs();
+void SixThreeProvs();
+void SixPushProvs();
+void OffLineProvs();
+void SwingTest();
+
 void SoloAWP(); // 
 void _7Block(); // -- S-Bot Autons --
 void Skills();  // 
