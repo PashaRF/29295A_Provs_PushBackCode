@@ -1,7 +1,7 @@
 {
   "py/object": "pros.conductor.project.Project",
   "py/state": {
-    "project_name": "Solo AWP",
+    "project_name": "6 + 3",
     "target": "v5",
     "templates": {
       "EZ-Template": {
@@ -426,7 +426,7 @@
     "upload_options": {
       "description": "29295A",
       "icon": "pizza",
-      "slot": 3
+      "slot": 4
     },
     "use_early_access": false
   }

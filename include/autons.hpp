@@ -1,6 +1,7 @@
 #pragma once
 
 void SkillsProvs(); 
+void EvilSkillsProvs();
 void SoloProvs();
 void SixThreeProvs();
 void SixPushProvs();

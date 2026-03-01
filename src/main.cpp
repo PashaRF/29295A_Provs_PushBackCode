@@ -25,10 +25,11 @@ ez::as::auton_selector.autons_add({
 // -- AUTONS --
 //
 
-{"Solo AWP", SoloProvs},
+//{"Solo AWP", SoloProvs},
 //{"Six Three", SixThreeProvs} 
-//{"Six Push", SixPushProvs}
+{"Six Push", SixPushProvs},
 //{"Skills", SkillsProvs}, 
+//{"Evil Skills", EvilSkillsProvs},
 //{"Off Line", OffLineProvs},
 //{"Swing Test", SwingTest},
 
