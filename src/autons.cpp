@@ -569,19 +569,19 @@ void SixThreeProvs() {
   ch->pid_wait();
   ch->pid_turn_set(-30, TURN_SPEED);   
   ch->pid_wait_quick_chain();
-  ch->pid_swing_set(ez::RIGHT_SWING, 145, SWING_SPEED, 37);
+  ch->pid_swing_set(ez::RIGHT_SWING, 143, SWING_SPEED, 37);
   ch->pid_wait_quick_chain();
   ch->pid_turn_set(215, TURN_SPEED);   
   ch->pid_wait_quick_chain();
-  ch->pid_drive_set(-6, DRIVE_SPEED); 
+  ch->pid_drive_set(-9, DRIVE_SPEED); 
   ch->pid_wait_quick_chain();
   brain->blockHolderOn = true;      //PROGRAM DIES HERE
-  pros::delay(1200);
+  pros::delay(1800);
   brain->blockHolderOn = false;
   ch->pid_drive_set(27.5, DRIVE_SPEED);
   ch->pid_wait_quick_chain();
   pros::delay(600);
-  ch->pid_drive_set(-8, DRIVE_SPEED); //change yhis
+  ch->pid_drive_set(-10, DRIVE_SPEED); //change yhis
   ch->pid_wait_quick_chain();
   ch->pid_turn_set(-93, TURN_SPEED);   
   ch->pid_wait_quick_chain();
@@ -618,7 +618,7 @@ void SixPushProvs() {
   brain->intakeOn = true;
   brain->blockHolderOn = false;
   ch->pid_drive_set(20, DRIVE_SPEED);
-  ch->pid_wait_until(7_in);
+  ch->pid_wait_until(8_in);
   brain->matchLoadOn = true;
   ch->pid_wait_quick_chain();
   ch->pid_turn_set(-15, TURN_SPEED);   
@@ -634,24 +634,25 @@ void SixPushProvs() {
   ch->pid_wait_quick_chain();
   ch->pid_turn_set(215, TURN_SPEED);   
   ch->pid_wait_quick_chain();
-  ch->pid_drive_set(-6, DRIVE_SPEED); 
+  ch->pid_drive_set(-10, DRIVE_SPEED); 
   ch->pid_wait_quick_chain();
   brain->blockHolderOn = true;      //PROGRAM DIES HERE
-  pros::delay(1200);
+  brain->matchLoadOn= false;
+  pros::delay(1900);
   brain->blockHolderOn = false;
-  brain->descoreOn = true;
-  ch->pid_drive_set(3, DRIVE_SPEED);
+  ch->pid_drive_set(5, DRIVE_SPEED);
   ch->pid_wait_quick_chain();
-  ch->pid_turn_set(125, TURN_SPEED);   
+  ch->pid_turn_set(-55, TURN_SPEED);   
   ch->pid_wait_quick_chain();
-  ch->pid_drive_set(-15, DRIVE_SPEED);
+  ch->pid_drive_set(-10, DRIVE_SPEED);
   ch->pid_wait_quick_chain();
-  ch->pid_turn_set(35, TURN_SPEED);   
+  ch->pid_turn_set(-150, TURN_SPEED);  //145 
   ch->pid_wait_quick_chain();
-  ch->pid_drive_set(-15, DRIVE_SPEED);
+  ch->pid_drive_set(-25, 70);
   ch->pid_wait_quick_chain();
-  ch->pid_turn_set(55, TURN_SPEED);   
+  ch->pid_turn_set(-120, TURN_SPEED);   
   ch->pid_wait_quick_chain();
+  brain->intakeOn = false;
 
  /* ch->pid_swing_set(ez::RIGHT_SWING, 125, SWING_SPEED, 25);
   ch->pid_wait_quick_chain();
